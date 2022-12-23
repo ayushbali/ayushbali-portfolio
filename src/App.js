@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import Navbar from "./components/Navbar";
+import Layout from "./components/Layout";
+import Footer from "./components/Footer";
+import { useState } from "react";
 
 function App() {
+  const [isDark, setDark] = useState(false);
+
+  const handleDark = () => {
+    setDark(!isDark);
+    console.log("click");
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={`App h-screen `}>
+      <Navbar toggleDark={handleDark} dark={isDark} />
+      <Layout dark={isDark} />
+      <Footer dark={isDark} />
     </div>
   );
 }
